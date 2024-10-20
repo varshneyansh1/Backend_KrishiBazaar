@@ -33,7 +33,7 @@ export const otpSignup = async (req, res) => {
     await newUser.save();
 
     // Send verification email
-    const verificationLink = `https://reactnative-snapkart-ecommerce-app.onrender.com/api/v1/user/verify-email?token=${verificationToken}&email=${email}`;
+    const verificationLink = `https://backend-krishibazaar.onrender.com/api/v1/user/verify-email?token=${verificationToken}&email=${email}`;
     const emailMessage = `
       <h1>Email Verification</h1>
       <p> Hi ${name} Please click the link below to verify your email:</p>
