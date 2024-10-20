@@ -6,7 +6,7 @@ const generateVerificationToken = () => {
 };
 
 export const otpSignup = async (req, res) => {
-  const { name, email, password, phone, address} = req.body;
+  const { name, email, password, phone, address,role} = req.body;
 
   try {
     const existingUser = await userModel.findOne({ email });
@@ -24,6 +24,7 @@ export const otpSignup = async (req, res) => {
       password,
       phone,
       address,
+      role,
       verificationToken,
       tokenExpiry,
       isVerified: false,  // User is not verified initially
