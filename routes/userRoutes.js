@@ -7,9 +7,11 @@ import {
   otpSignup,
   udpatePasswordController,
   updateProfileController,
+  updateProfilePicController,
   verifyEmail,
 } from "../controllers/userController.js";
 import { isAuth } from "../middlewares/authMiddleware.js";
+import { singleUpload } from "../middlewares/multer.js";
 
 // router object
 const router = express.Router();
@@ -26,4 +28,6 @@ router.get("/logout", isAuth, logoutController);
 router.put("/profile-update", isAuth, updateProfileController);
 // updte password
 router.put("/update-password", isAuth, udpatePasswordController);
+//update profile pic
+router.put("/update-picture", isAuth, singleUpload, updateProfilePicController);
 export default router;
