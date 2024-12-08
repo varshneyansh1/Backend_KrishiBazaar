@@ -8,8 +8,8 @@ import cookieParser from "cookie-parser";
 import cloudinary from "cloudinary";
 import productRoutes from "./routes/productRoutes.js";
 import categoryRoutes from "./routes/categoryRoutes.js";
-// import orderRoutes from "./routes/orderRoutes.js";
-// import Stripe from "stripe";
+import orderRoutes from "./routes/orderRoutes.js";
+import Stripe from "stripe";
 // import helmet from "helmet";
 // import mongoSanitize from "express-mongo-sanitize";
 //dot env config
@@ -17,7 +17,7 @@ dotenv.config();
 // db connection
 connectDB();
 // //stripe config
-// export const stripe = new Stripe(process.env.STRIPE_API_SECRET);
+export const stripe = new Stripe(process.env.STRIPE_API_SECRET);
 // cloudinary config
 cloudinary.v2.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -40,7 +40,7 @@ app.use(cookieParser());
  app.use("/api/v1/user", userRoutes);
  app.use("/api/v1/product", productRoutes);
  app.use("/api/v1/cat", categoryRoutes);
-// app.use("/api/v1/order", orderRoutes);
+ app.use("/api/v1/order", orderRoutes);
 
 app.get("/", (req, res) => {
   return res.status(200).send("<h1> Welcome</h1>");
